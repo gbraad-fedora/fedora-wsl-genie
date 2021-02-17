@@ -33,10 +33,10 @@ make
 %install
 install -d -p %{buildroot}%{_libexecdir}/%{name}
 install -d -p %{buildroot}%{_sysconfdir}
-install -m 755 -vp genie/genie/bin/Release/net5.0/linux-x64/publish/genie %{buildroot}%{_libexecdir}/%{name}
-install -m 755 -vp genie/runinwsl/bin/Release/net5.0/linux-x64/publish/runinwsl %{buildroot}%{_libexecdir}/%{name}
-install -m 755 -vp genie/scripts/10-genie-envar.sh %{buildroot}%{_libexecdir}/%{name}
-install -m 755 -vp genie/conf/genie.ini %{buildroot}%{_sysconfdir}/
+install -m 4755 -vp genie/genie/bin/Release/net5.0/linux-x64/publish/genie %{buildroot}%{_libexecdir}/%{name}
+install -m 0755 -vp genie/runinwsl/bin/Release/net5.0/linux-x64/publish/runinwsl %{buildroot}%{_libexecdir}/%{name}
+install -m 0755 -vp genie/scripts/10-genie-envar.sh %{buildroot}%{_libexecdir}/%{name}
+install -m 0755 -vp genie/conf/genie.ini %{buildroot}%{_sysconfdir}/
 
 %post
 ln -s %{_libexecdir}/%{name}/%{name} %{_bindir}/%{name}
