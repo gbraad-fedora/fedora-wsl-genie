@@ -7,7 +7,7 @@
 %global __os_install_post /usr/lib/rpm/brp-compress %{nil}
 
 Name:          genie
-Version:       %{version}
+Version:       1.34
 Release:       1%{?dist}
 Summary:       A quick way into systemd "bottle" for WSL
 
@@ -40,13 +40,15 @@ install -m 0755 -vp genie/conf/genie.ini %{buildroot}%{_sysconfdir}/
 
 %post
 ln -s %{_libexecdir}/%{name}/%{name} %{_bindir}/%{name}
+ln -s %{_libexecdir}/%{name}/10-genie-envar.sh %{_exec_prefix}/lib/systemd/system-environment-generators/
 
 %postun
 rm -rf %{_libexecdir}/%{name}
 rm -f %{_bindir}/%{name}
+rm -f %{_exec_prefix}/lib/systemd/system-environment-generators/10-envar.sh
 
 %clean
-rm -rf %{buildroot}
+#rm -rf %{buildroot}
 
 %files
 %{_libexecdir}/%{name}/*
