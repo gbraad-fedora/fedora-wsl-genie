@@ -4,6 +4,7 @@
 # debuginfo is 'not supported' for .NET binaries
 %global debug_package %{nil}
 %global _enable_debug_package 0
+%global __os_install_post /usr/lib/rpm/brp-compress %{nil}
 
 Name:          genie
 Version:       %{version}
