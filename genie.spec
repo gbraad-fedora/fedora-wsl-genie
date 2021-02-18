@@ -7,7 +7,7 @@
 %global __os_install_post /usr/lib/rpm/brp-compress %{nil}
 
 Name:          genie
-Version:       1.34
+Version:       %{version}
 Release:       1%{?dist}
 Summary:       A quick way into systemd "bottle" for WSL
 
@@ -16,7 +16,9 @@ URL:           %{project}
 Source0:       %{project}archive/%{version}.tar.gz
 Requires:      systemd-container
 Requires:      daemonize
+Requires:      dotnet-runtme-5.0
 BuildRequires: dotnet-sdk-5.0
+BuildRequires: make
 
 ExclusiveArch: x86_64
 
@@ -48,7 +50,7 @@ rm -f %{_bindir}/%{name}
 rm -f %{_exec_prefix}/lib/systemd/system-environment-generators/10-envar.sh
 
 %clean
-#rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %{_libexecdir}/%{name}/*
